@@ -3,251 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PP4G Mentor Badge Generator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>PP4G Mentor Badge Generator - Style 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: "Inter Tight", sans-serif;
-      background: #f4f4f0;
-      color: #1a1a1a;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 48px 24px 64px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    header h1 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #085041;
-      margin-bottom: 6px;
-    }
-
-    header p {
-      font-size: 14px;
-      color: #666;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      border: 1px solid #e4e4e0;
-      padding: 32px;
-      width: 100%;
-      max-width: 860px;
-    }
-
-    .fields {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .field label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      color: #555;
-      margin-bottom: 6px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .field input {
-      width: 100%;
-      font-family: "Inter Tight", sans-serif;
-      font-size: 15px;
-      padding: 10px 14px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      outline: none;
-      transition: border-color 0.15s;
-      color: #1a1a1a;
-      background: #fafafa;
-    }
-
-    .field input:focus {
-      border-color: #1D9E75;
-      background: #fff;
-    }
-
-    .actions {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .btn {
-      flex: 1;
-      font-family: "Inter Tight", sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      border: none;
-      transition: background 0.15s, transform 0.1s;
-    }
-
+    body { font-family: "Inter Tight", sans-serif; background: #f4f4f0; color: #1a1a1a; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 48px 24px 64px; }
+    header { text-align: center; margin-bottom: 40px; }
+    header h1 { font-size: 22px; font-weight: 700; color: #085041; margin-bottom: 6px; }
+    header p { font-size: 14px; color: #666; }
+    .card { background: #fff; border-radius: 16px; border: 1px solid #e4e4e0; padding: 32px; width: 100%; max-width: 860px; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .field label { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .field input { width: 100%; font-family: "Inter Tight", sans-serif; font-size: 15px; padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px; outline: none; transition: border-color 0.15s; color: #1a1a1a; background: #fafafa; }
+    .field input:focus { border-color: #1D9E75; background: #fff; }
+    .actions { display: flex; gap: 12px; margin-bottom: 28px; }
+    .btn { flex: 1; font-family: "Inter Tight", sans-serif; font-size: 14px; font-weight: 600; padding: 12px 20px; border-radius: 8px; cursor: pointer; border: none; transition: background 0.15s, transform 0.1s; }
     .btn:active { transform: scale(0.98); }
-
-    .btn-primary {
-      background: #1D9E75;
-      color: #fff;
-    }
-
+    .btn-primary { background: #1D9E75; color: #fff; }
     .btn-primary:hover { background: #0F6E56; }
-
-    .btn-secondary {
-      background: #f0f0ec;
-      color: #333;
-      border: 1px solid #ddd;
-    }
-
+    .btn-secondary { background: #f0f0ec; color: #333; border: 1px solid #ddd; }
     .btn-secondary:hover { background: #e4e4e0; }
-
-    .btn-linkedin {
-      background: #0A66C2;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
+    .btn-linkedin { background: #0A66C2; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .btn-linkedin:hover { background: #004182; }
-    .btn-linkedin svg { flex-shrink: 0; }
-
-    .preview {
-      display: flex;
-      justify-content: center;
-      background: #f0f0ec;
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    canvas {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-    }
-
-    .hint {
-      font-size: 12px;
-      color: #999;
-      text-align: center;
-      margin-top: 12px;
-      line-height: 1.6;
-    }
-
-    .instructions {
-      margin-top: 32px;
-      background: #f0faf6;
-      border: 1px solid #9FE1CB;
-      border-radius: 12px;
-      padding: 24px 28px;
-      width: 100%;
-      max-width: 860px;
-    }
-
-    .instructions h2 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #085041;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .instructions ol {
-      padding-left: 18px;
-      font-size: 14px;
-      color: #333;
-      line-height: 2;
-    }
-
+    .preview { display: flex; justify-content: center; background: #f0f0ec; border-radius: 12px; padding: 24px; }
+    canvas { max-width: 100%; border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); }
+    .hint { font-size: 12px; color: #999; text-align: center; margin-top: 12px; line-height: 1.6; }
+    .instructions { margin-top: 32px; background: #f0faf6; border: 1px solid #9FE1CB; border-radius: 12px; padding: 24px 28px; width: 100%; max-width: 860px; }
+    .instructions h2 { font-size: 14px; font-weight: 700; color: #085041; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .instructions ol { padding-left: 18px; font-size: 14px; color: #333; line-height: 2; }
     .instructions ol li strong { color: #085041; }
-
-    .post-preview {
-      margin-top: 16px;
-      background: #fff;
-      border: 1px solid #e4e4e0;
-      border-radius: 12px;
-      padding: 20px 24px;
-      width: 100%;
-      max-width: 860px;
-    }
-
-    .post-preview-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .post-preview-header h2 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #085041;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .post-preview-header button {
-      font-family: "Inter Tight", sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      background: #f0f0ec;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 6px 12px;
-      cursor: pointer;
-      color: #333;
-    }
-
+    .post-preview { margin-top: 16px; background: #fff; border: 1px solid #e4e4e0; border-radius: 12px; padding: 20px 24px; width: 100%; max-width: 860px; }
+    .post-preview-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .post-preview-header h2 { font-size: 14px; font-weight: 700; color: #085041; text-transform: uppercase; letter-spacing: 0.5px; }
+    .post-preview-header button { font-family: "Inter Tight", sans-serif; font-size: 12px; font-weight: 600; background: #f0f0ec; border: 1px solid #ddd; border-radius: 6px; padding: 6px 12px; cursor: pointer; color: #333; }
     .post-preview-header button:hover { background: #e4e4e0; }
-
-    .post-preview p {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.7;
-      white-space: pre-line;
-    }
-
-    #toast {
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #085041;
-      color: #fff;
-      font-family: "Inter Tight", sans-serif;
-      font-size: 14px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
-    }
-
-    #toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    @media (max-width: 560px) {
-      .fields { grid-template-columns: 1fr; }
-      .actions { flex-direction: column; }
-    }
+    .post-preview p { font-size: 14px; color: #333; line-height: 1.7; white-space: pre-line; }
+    #toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: #085041; color: #fff; font-family: "Inter Tight", sans-serif; font-size: 14px; padding: 10px 20px; border-radius: 8px; opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    @media (max-width: 560px) { .fields { grid-template-columns: 1fr; } .actions { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -315,38 +108,34 @@ Learn more at www.personio.foundation/programs/mentorship
 
   <script>
     const canvas = document.getElementById('badge');
-    const ctx = canvas.getContext('2d');
+    const ctx    = canvas.getContext('2d');
 
+    // Scale factor from original 800×400 → 1200×600
+    const S = 1.5;
     const W = 1200, H = 600;
 
-    const BG        = '#1a4a3a';   // main background - dark green
-    const GREEN_MID = '#1D7A5F';   // slightly lighter for stamp circle
-    const CREAM     = '#e8e0d0';   // warm cream for text & elements
-    const BORDER    = '#2a6a52';   // subtle border color
+    // Colors - kept from original
+    const GREEN_DARK  = '#0f3d2e';
+    const GREEN_MID   = '#1D9E75';
+    const GREEN_LIGHT = '#9FE1CB';
+    const WHITE       = '#FFF7EB';  // light beige for name and PP4G Mentor line
+    const MUTED       = '#6aaa8a';  // muted green for secondary text
+
+    // Logo - embedded SVG as base64 (no external file needed)
+    const offCanvas = document.createElement('canvas');
+    const offCtx    = offCanvas.getContext('2d');
+    const logoImg   = new Image();
+    logoImg.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYzIiBoZWlnaHQ9IjEwMyIgdmlld0JveD0iMCAwIDM2MyAxMDMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMTQuNjkyIDAuOTE1NjE4SDExNS4yMjVDMTE4LjI1IDAuOTE1NjE4IDEyMS4yNzUgMC45MTE3NjQgMTI0LjMgMC45MTcyN0MxMjUuNjA3IDAuOTIwMDIyIDEyNi44NyAxLjEzODA0IDEyOC4wNjkgMS42OTAyMkMxMjkuODM3IDIuNTA0NDcgMTMxLjA0MSAzLjgyMTkxIDEzMS42MTMgNS42NzU1N0MxMzIuMjExIDcuNjExMjYgMTMyLjIxMyA5LjU1MyAxMzEuMzc1IDExLjQyMjFDMTMwLjMwNSAxMy44MDU5IDEyOC4zMzEgMTUuMDcwNSAxMjUuODM0IDE1LjUwNkMxMjQuNjY0IDE1LjcxMDIgMTIzLjQ0OSAxNS42NzQ0IDEyMi4yNTIgMTUuNzE0MUMxMjEuMzU5IDE1Ljc0MzggMTIwLjQ2NSAxNS43MjAxIDExOS41MTEgMTUuNzIwMVYyNC43Njc3SDExNC42OTJWMC45MTU2MThaTTExOS41NDEgMTEuMzkyM0MxMjEuMjMzIDExLjM5MjMgMTIyLjg5NSAxMS40MzUzIDEyNC41NTQgMTEuMzc0N0MxMjUuNDMxIDExLjM0MjggMTI2LjI0MSAxMC45ODMzIDEyNi44MzggMTAuMzAyM0MxMjcuNzEyIDkuMzA2OTEgMTI3Ljg2MiA4LjE2MDE0IDEyNy4zNTkgNi45NTk0MkMxMjYuODQzIDUuNzI3ODcgMTI1LjgxNyA1LjE1Njk2IDEyNC41MzEgNS4wODk3OUMxMjMuNDE1IDUuMDMxNDQgMTIyLjI5MyA1LjA3NTQ4IDEyMS4xNzQgNS4wNzQzOEMxMjAuNjM2IDUuMDc0MzggMTIwLjA5OCA1LjA3NDM4IDExOS41NDEgNS4wNzQzOFYxMS4zOTE4VjExLjM5MjNaIiBmaWxsPSIjRkZGN0VCIi8+CjxwYXRoIGQ9Ik0xNTAuNDkyIDE3LjE1NzRDMTQ4LjIwOCAxNy4xNTc0IDE0NS45ODUgMTcuMTU3NCAxNDMuNzYxIDE3LjE1NzRDMTQxLjUzOCAxNy4xNTc0IDEzOS4zNDkgMTcuMTU3NCAxMzcuMTQ0IDE3LjE1NzRDMTM3LjA5NSAxOC43OTM2IDEzOC4zMzkgMjAuMzM0IDE0MC4wOTMgMjAuNzkzMUMxNDIuMjUxIDIxLjM1ODUgMTQ0LjEwMyAyMC44NDgyIDE0NS41OTEgMTkuMTUxNEMxNDUuNjMzIDE5LjEwMzUgMTQ1LjY3NSAxOS4wNTQgMTQ1LjcyIDE5LjAwOTlDMTQ1Ljc0MiAxOC45ODg1IDE0NS43NzQgMTguOTc2OSAxNDUuODUgMTguOTMyOUMxNDYuOTQzIDE5LjcwOTEgMTQ4LjA1NSAyMC40OTggMTQ5LjIwMiAyMS4zMTIzQzE0OC4xNjcgMjIuNjk4IDE0Ni45MjQgMjMuNzYxNiAxNDUuMzcyIDI0LjQ0ODFDMTM5LjY0NiAyNi45ODE3IDEzMy4yMSAyMy4zNTI2IDEzMi40MjggMTcuMTQ3NUMxMzIuMDQzIDE0LjA5MjUgMTMyLjc0MyAxMS4zMzM4IDEzNC44NDggOS4wMzc1QzEzNi45NjMgNi43MzEzIDEzOS42NTIgNS44NzMwMSAxNDIuNzM3IDYuMTkxNzdDMTQ1LjI4NCA2LjQ1NDkzIDE0Ny4zNzcgNy41NTY1NSAxNDguODc5IDkuNjUyNDVDMTUwLjQ4OCAxMS44OTkyIDE1MC44OTkgMTQuNDE5NiAxNTAuNDkyIDE3LjE1NjNWMTcuMTU3NFpNMTQ2LjE3MiAxMy43MzA4QzE0NS42NDYgMTEuMzU2OSAxNDMuODA0IDEwLjAzMDcgMTQxLjI4MiAxMC4xNTRDMTM5LjMwNyAxMC4yNTA5IDEzNy41MDIgMTEuODU0MSAxMzcuMjg1IDEzLjczMDhIMTQ2LjE3MloiIGZpbGw9IiNGRkY3RUIiLz4KPHBhdGggZD0iTTIzOC42MDUgMjUuMjMwNkMyMzMuMDA1IDI1LjIyNjggMjI4Ljk5MiAyMS4yMTgzIDIyOC45OTYgMTUuNjMwOUMyMjkgMTAuMTk2IDIzMy4xNiA2LjEyMzY1IDIzOC43MDEgNi4xMzEzNkMyNDQuMiA2LjEzOTA3IDI0OC4zMTYgMTAuMzAxMSAyNDguMzA4IDE1Ljg0ODlDMjQ4LjMwMSAyMS4yMjEgMjQ0LjE1IDI1LjIzMzkgMjM4LjYwNSAyNS4yMzA2Wk0yMzguNTg5IDIxLjAwNTJDMjQxLjUzNyAyMS4wMTM1IDI0My43NTUgMTguNzc4MyAyNDMuNzgyIDE1Ljc3MThDMjQzLjgwOSAxMi43MDI2IDI0MS42MDMgMTAuMzY1NSAyMzguNjY2IDEwLjM1MjNDMjM1LjY4MyAxMC4zMzg2IDIzMy40ODYgMTIuNTgzNyAyMzMuNDU5IDE1LjY3MjdDMjMzLjQzMyAxOC43MTYxIDIzNS42MjcgMjAuOTk3IDIzOC41OSAyMS4wMDU4TDIzOC41ODkgMjEuMDA1MloiIGZpbGw9IiNGRkY3RUIiLz4KPHBhdGggZD0iTTE5MC44MTMgMjUuMjMwNkMxODUuMjI0IDI1LjIyNDYgMTgxLjE1NyAyMS4xOTc0IDE4MS4xNzcgMTUuNjg5MkMxODEuMTk3IDEwLjE2NzMgMTg1LjI5OCA2LjEyNDc1IDE5MC44NzIgNi4xMzEzNkMxOTYuMzY3IDYuMTM3OTYgMjAwLjQ0NSAxMC4yNDk5IDIwMC40MzMgMTUuNzc0QzIwMC40MjEgMjEuMjI3NiAxOTYuMzQ0IDI1LjIzNjcgMTkwLjgxNCAyNS4yMzA2SDE5MC44MTNaTTE5MC43NzUgMjEuMDA1MkMxOTMuNzk3IDIxLjAwOCAxOTUuOTQ1IDE4LjgyNDYgMTk1Ljk1MSAxNS43NDc2QzE5NS45NTYgMTIuNjczNCAxOTMuNzQ2IDEwLjM1MTggMTkwLjgxMyAxMC4zNTIzQzE4Ny44OSAxMC4zNTIzIDE4NS42NjggMTIuNjUxOSAxODUuNjU5IDE1LjY4NjVDMTg1LjY1MSAxOC43ODExIDE4Ny43ODggMjEuMDAzIDE5MC43NzUgMjEuMDA1OFYyMS4wMDUyWiIgZmlsbD0iI0ZGRjdFQiIvPgo8cGF0aCBkPSJNMjE4LjIzNiAyNC44NDExSDIxMy43NzNWMjQuMjEwMkMyMTMuNzczIDIwLjMyOTUgMjEzLjc3MyAxNi40NDkzIDIxMy43NzMgMTIuNTY4NkMyMTMuNzczIDEwLjg5NzcgMjEzLjM4OSAxMC41MTU2IDIxMS43MTEgMTAuNTE1NkMyMTAuNjM5IDEwLjUxNTYgMjA5LjU2NiAxMC41MTIzIDIwOC40OTQgMTAuNTE2N0MyMDcuMjk0IDEwLjUyMTEgMjA2Ljc5OSAxMS4wMDgzIDIwNi43OTggMTIuMTk5N0MyMDYuNzk1IDE2LjIwODIgMjA2Ljc5NyAyMC4yMTY2IDIwNi43OTcgMjQuMjI0NVYyNC44Mjk2SDIwMi4zMTVDMjAyLjMxNSAyNC42Mzc0IDIwMi4zMTUgMjQuNDY2OCAyMDIuMzE1IDI0LjI5NTZDMjAyLjMxNSAyMC4wOTU1IDIwMi4zMTEgMTUuODk1NSAyMDIuMzE2IDExLjY5NTRDMjAyLjMxOSA4LjYzMjc2IDIwNC42MTggNi4zNDUyOCAyMDcuNjg4IDYuMzQwODdDMjA5LjM4NSA2LjMzODY3IDIxMS4wODEgNi4zMzk3NyAyMTIuNzc4IDYuMzQwODdDMjE1Ljk3OCA2LjM0MTk3IDIxOC4yMzYgOC41OTkxOCAyMTguMjM2IDExLjc5NzhDMjE4LjIzNiAxNS45NSAyMTguMjM2IDIwLjEwMjEgMjE4LjIzNiAyNC4yNTM3VjI0Ljg0MTdWMjQuODQxMVoiIGZpbGw9IiNGRkY3RUIiLz4KPHBhdGggZD0iTTE2My44NzYgMTkuMjA1OUgxNjguNDAyQzE2OC44ODggMjAuOTg4IDE2OS42ODQgMjEuNjQzMSAxNzEuNTQ0IDIxLjY1NzRDMTcyLjI5OCAyMS42NjM1IDE3My4wNzUgMjEuNTY2NiAxNzMuODAzIDIxLjM3MjNDMTc0LjY0MiAyMS4xNDgyIDE3NS4wNTMgMjAuNDc0MyAxNzUuMDUgMTkuNjQ3NEMxNzUuMDQ3IDE4Ljg0MjUgMTc0LjY4NyAxOC4yNTg0IDE3My44MzEgMTguMDE1MUMxNzIuODA3IDE3LjcyMzkgMTcxLjc1IDE3LjU0NDQgMTcwLjY5OSAxNy4zNTVDMTY5LjMyNyAxNy4xMDczIDE2Ny45ODcgMTYuNzg3OSAxNjYuNzQgMTYuMTI2N0MxNjMuNzc0IDE0LjU1NSAxNjMuNzY3IDEwLjg4MTggMTY1LjI4MSA4Ljg5MjY4QzE2Ni40NTEgNy4zNTU1OCAxNjguMDgxIDYuNjA0MSAxNjkuOTMxIDYuMjg4MDlDMTcyLjIyIDUuODk2NjYgMTc0LjQzNiA2LjEzOTQ0IDE3Ni40NjkgNy4zMjE0NUMxNzguMiA4LjMyNzgzIDE3OS4xNjcgOS44NDQ1NiAxNzkuMjgyIDExLjkxNTFIMTc0Ljg2MUMxNzQuNTM2IDEwLjE3ODIgMTczLjQ3NCA5LjczMjI1IDE3MS45OTEgOS42OTQ4MUMxNzEuMzYgOS42Nzg4NSAxNzAuNzExIDkuNzQ5ODcgMTcwLjA5NiA5Ljg5MjQ2QzE2OS4zMjUgMTAuMDcxNCAxNjguOTA0IDEwLjYxNDggMTY4Ljg1MiAxMS4yOTQ3QzE2OC43ODUgMTIuMTY0NSAxNjkuMDQ3IDEyLjc4NjYgMTY5LjgzOCAxMy4wNzEzQzE3MC42ODQgMTMuMzc1NyAxNzEuNTg3IDEzLjU0MzYgMTcyLjQ3OCAxMy42OTcyQzE3NC4wNjggMTMuOTcxNCAxNzUuNjY2IDE0LjE5MzMgMTc3LjExMiAxNC45ODMzQzE3OS4wNzcgMTYuMDU2OCAxNzkuNzQgMTcuODQ4OCAxNzkuNDY0IDE5LjkwNEMxNzkuMTA0IDIyLjU5MTcgMTc3LjM4MSAyNC4xMDY4IDE3NC45MDMgMjQuODA4MkMxNzIuMDgzIDI1LjYwNjUgMTY5LjMyNCAyNS40MTQ5IDE2Ni43NyAyMy44NTM1QzE2NS4xNzUgMjIuODc4NSAxNjQuMjAzIDIxLjQ0MzggMTYzLjg3OSAxOS41OTI0QzE2My44NiAxOS40ODUgMTYzLjg3NyAxOS4zNzE2IDE2My44NzcgMTkuMjA1OUgxNjMuODc2WiIgZmlsbD0iI0ZGRjdFQiIvPgo8cGF0aCBkPSJNMTYyLjk2NiA2LjM2MTY3VjEwLjUxNTVDMTYyLjY5OSAxMC41MTU1IDE2Mi40MzMgMTAuNTE1NSAxNjIuMTY3IDEwLjUxNTVDMTYxLjA5NSAxMC41MTU1IDE2MC4wMjIgMTAuNTEyMiAxNTguOTUgMTAuNTE2NkMxNTcuNzQxIDEwLjUyMTUgMTU3LjIzMSAxMS4wMjY0IDE1Ny4yMyAxMi4yNDA5QzE1Ny4yMjYgMTYuMjQ5MyAxNTcuMjI5IDIwLjI1NzIgMTU3LjIyOSAyNC4yNjU3QzE1Ny4yMjkgMjQuNDM5MSAxNTcuMjI5IDI0LjYxMzEgMTU3LjIyOSAyNC44MjcySDE1Mi43ODRWMjQuMzI4NUMxNTIuNzg0IDIwLjA5NjUgMTUyLjc3OSAxNS44NjUgMTUyLjc4NiAxMS42MzMxQzE1Mi43OTEgOC42MTg4NyAxNTUuMDc0IDYuMzUxNzYgMTU4LjEwMiA2LjM0MDc1QzE1OS41NzUgNi4zMzUyNCAxNjEuMDQ4IDYuMzM5MSAxNjIuNTIxIDYuMzQwNzVDMTYyLjY2MSA2LjM0MDc1IDE2Mi44MDEgNi4zNTM0MSAxNjIuOTY2IDYuMzYxMTJWNi4zNjE2N1oiIGZpbGw9IiNGRkY3RUIiLz4KPHBhdGggZD0iTTIyNi4yOTggMjQuODQxM0gyMjEuNzQxVjguNzQxOTRIMjI2LjI5OFYyNC44NDEzWiIgZmlsbD0iI0ZGRjdFQiIvPgo8cGF0aCBkPSJNMjI0LjAxMSA1Ljk1MjQxQzIyMi4zMTIgNS45NTk1NyAyMjEuMDIxIDQuNjgzNDIgMjIxLjAyOCAzLjAwNTM5QzIyMS4wMzYgMS4zNTE1NyAyMjIuMzczIC0wLjAwMTY1MDEgMjIzLjk5NyAxLjUxMDI1ZS0wNkMyMjUuNjUyIDAuMDAxNjUzMTIgMjI3LjAxMiAxLjM1OTgzIDIyNy4wMTYgMy4wMTUzQzIyNy4wMiA0LjY2MzYxIDIyNS43MSA1Ljk0NTI2IDIyNC4wMTEgNS45NTI0MVoiIGZpbGw9IiNGRkY3RUIiLz4KPHBhdGggZD0iTTE1LjM2MjEgOTIuMjY4OFY0Mi44MDg3SDQ3LjAzMDNWNTAuNDMzOEgyNC4wMTc2VjY0LjMxMDFINDMuMDQ2VjcxLjkzNTJIMjQuMDE3NlY5Mi4yNjg4SDE1LjM2MjFaTTY1LjA3MSA5Mi45NTU3QzU0LjY5ODEgOTIuOTU1NyA0Ny4wNzMgODUuMzk5MyA0Ny4wNzMgNzUuMDk1MUM0Ny4wNzMgNjQuNzkxIDU0LjY5ODEgNTcuMjM0NSA2NS4wNzEgNTcuMjM0NUM3NS41MTI1IDU3LjIzNDUgODMuMTM3NiA2NC43OTEgODMuMTM3NiA3NS4wOTUxQzgzLjEzNzYgODUuMzk5MyA3NS41MTI1IDkyLjk1NTcgNjUuMDcxIDkyLjk1NTdaTTY1LjA3MSA4Ni4xNTVDNzAuNzcyNiA4Ni4xNTUgNzQuNTUwOCA4MS41NTI0IDc0LjU1MDggNzUuMDk1MUM3NC41NTA4IDY4LjYzNzkgNzAuNzcyNiA2NC4wMzUzIDY1LjA3MSA2NC4wMzUzQzU5LjQzOCA2NC4wMzUzIDU1LjU5MTEgNjguNjM3OSA1NS41OTExIDc1LjA5NTFDNTUuNTkxMSA4MS41NTI0IDU5LjQzOCA4Ni4xNTUgNjUuMDcxIDg2LjE1NVpNOTkuNzczMyA5Mi45NTU3Qzk2LjIwMTIgOTIuOTU1NyA5My4xNzg2IDkxLjU4MTkgOTEuMTE3OCA4OS4zODM2Qzg4LjkxOTYgODcuMDQ4IDg3LjY4MzEgODMuNzUwNyA4Ny42ODMxIDc4LjUyOTlWNTcuOTIxNUg5NS45MjY0Vjc3LjcwNTVDOTUuOTI2NCA4MC41MjIgOTYuNjEzNCA4Mi41MTQyIDk3Ljc4MTIgODMuNzUwN0M5OC44ODAzIDg1LjA1NTkgMTAwLjU5OCA4NS43NDI4IDEwMi40NTIgODUuNzQyOEMxMDcuMTI0IDg1Ljc0MjggMTA5LjczNCA4Mi4xMDIgMTA5LjczNCA3Ni4yNjNWNTcuOTIxNUgxMTcuOTc3VjkyLjI2ODhIMTEwLjAwOVY4Ni43NzMyQzEwNy45NDggOTAuODI2MiAxMDQuMzc2IDkyLjk1NTcgOTkuNzczMyA5Mi45NTU3Wk0xMjUuMTExIDkyLjI2ODhWNTcuOTIxNUgxMzMuMDhWNjMuMDczNkMxMzUuMDcyIDU5LjQzMjggMTM4Ljg1IDU3LjIzNDUgMTQzLjUyMSA1Ny4yMzQ1QzE0Ny4xNjIgNTcuMjM0NSAxNTAuMTg1IDU4LjYwODQgMTUyLjMxNCA2MC44NzU0QzE1NC40NDQgNjMuMTQyMyAxNTUuNzQ5IDY2LjQzOTYgMTU1Ljc0OSA3MC44MzYxVjkyLjI2ODhIMTQ3LjUwNlY3Mi4wNzI2QzE0Ny41MDYgNjkuNjY4MyAxNDYuODg3IDY3LjY3NjEgMTQ1LjcyIDY2LjQzOTZDMTQ0LjU1MiA2NS4xMzQ0IDE0Mi45MDMgNjQuNDQ3NSAxNDAuODQyIDY0LjQ0NzVDMTM2LjMwOCA2NC40NDc1IDEzMy4zNTUgNjcuODgyMiAxMzMuMzU1IDczLjEwM1Y5Mi4yNjg4SDEyNS4xMTFaTTE3NS45MjcgOTIuODg3MUMxNjYuOTI4IDkyLjg4NzEgMTYwLjQwMiA4NS4xOTMzIDE2MC40MDIgNzUuMDk1MUMxNjAuNDAyIDY0Ljk5NyAxNjYuOTI4IDU3LjMwMzIgMTc1LjkyNyA1Ny4zMDMyQzE4MC45NDEgNTcuMzAzMiAxODUuMDYzIDU5LjU3MDIgMTg3LjMzIDYzLjI3OTdWNDIuODA4N0gxOTUuNDM2VjkyLjI2ODhIMTg3LjQ2N1Y4Ni42MzU4QzE4NS4yNjkgOTAuNTUxNCAxODEuMDEgOTIuODg3MSAxNzUuOTI3IDkyLjg4NzFaTTE3OC4xOTQgODYuMTU1QzE4My44OTUgODYuMTU1IDE4Ny41MzYgODEuNDgzNyAxODcuNTM2IDc1LjA5NTFDMTg3LjUzNiA2OC43MDY1IDE4My44OTUgNjQuMDM1MyAxNzguMTk0IDY0LjAzNTNDMTcyLjU2MSA2NC4wMzUzIDE2OC45MiA2OC43MDY1IDE2OC45MiA3NS4wOTUxQzE2OC45MiA4MS40ODM3IDE3Mi41NjEgODYuMTU1IDE3OC4xOTQgODYuMTU1Wk0yMTYuMDI5IDkyLjg4NzFDMjA3LjAzIDkyLjg4NzEgMjAwLjUwNCA4NS4xOTMzIDIwMC41MDQgNzUuMDk1MUMyMDAuNTA0IDY0Ljk5NyAyMDcuMDMgNTcuMzAzMiAyMTYuMDI5IDU3LjMwMzJDMjIxLjExMiA1Ny4zMDMyIDIyNS4zNzEgNTkuNjM4OSAyMjcuNTY5IDYzLjU1NDVWNTcuOTIxNUgyMzUuNTM4Vjg2LjI5MjRDMjM1LjUzOCA4OC41NTkzIDIzNS42NzUgOTAuNDE0IDIzNS45NSA5Mi4yNjg4SDIyNy45MTNDMjI3LjYzOCA5MC41NTE0IDIyNy41MDEgODguODM0MSAyMjcuNTAxIDg2Ljc3MzJDMjI1LjMwMiA5MC41NTE0IDIyMS4xMTIgOTIuODg3MSAyMTYuMDI5IDkyLjg4NzFaTTIxOC4yOTUgODYuMTU1QzIyMy45OTcgODYuMTU1IDIyNy42MzggODEuNDgzNyAyMjcuNjM4IDc1LjA5NTFDMjI3LjYzOCA2OC43MDY1IDIyMy45OTcgNjQuMDM1MyAyMTguMjk1IDY0LjAzNTNDMjEyLjY2MyA2NC4wMzUzIDIwOS4wMjIgNjguNzA2NSAyMDkuMDIyIDc1LjA5NTFDMjA5LjAyMiA4MS40ODM3IDIxMi42NjMgODYuMTU1IDIxOC4yOTUgODYuMTU1Wk0yNTUuMDMxIDkyLjY4MUMyNTEuNjY1IDkyLjY4MSAyNDkuMDU1IDkxLjkyNTMgMjQ3LjQwNiA5MC4yNzY3QzI0NS42ODkgODguNjk2NyAyNDUuMDAyIDg2LjQ5ODUgMjQ1LjAwMiA4My4yMDExVjY0Ljc5MUgyMzkuNTA2VjU3LjkyMTVIMjQ1LjAwMlY0OS40MDM0SDI1My4yNDVWNTcuOTIxNUgyNTkuMjlWNjQuNzkxSDI1My4yNDVWODEuODk1OUMyNTMuMjQ1IDgzLjEzMjQgMjUzLjQ1MSA4My45NTY4IDI1NC4wNyA4NC41MDYzQzI1NC42ODggODUuMTI0NiAyNTUuNjUgODUuMzk5MyAyNTcuMDIzIDg1LjM5OTNDMjU3Ljc3OSA4NS4zOTkzIDI1OC41MzUgODUuMzMwNiAyNTkuMjkgODUuMTI0NlY5Mi4yNjg4QzI1OC4yNiA5Mi40NzQ5IDI1Ni42MTEgOTIuNjgxIDI1NS4wMzEgOTIuNjgxWk0yNjQuMTE5IDkyLjI2ODhWNTcuOTIxNUgyNzIuMzYyVjkyLjI2ODhIMjY0LjExOVpNMjY4LjI0IDUzLjE4MTZDMjY1LjI4NiA1My4xODE2IDI2My4wMiA1MC45ODMzIDI2My4wMiA0OC4wMjk1QzI2My4wMiA0NS4wNzU2IDI2NS4yODYgNDIuODc3NCAyNjguMjQgNDIuODc3NEMyNzEuMTk0IDQyLjg3NzQgMjczLjM5MiA0NS4wNzU2IDI3My4zOTIgNDguMDI5NUMyNzMuMzkyIDUwLjk4MzMgMjcxLjE5NCA1My4xODE2IDI2OC4yNCA1My4xODE2Wk0yOTUuNDAzIDkyLjk1NTdDMjg1LjAzMSA5Mi45NTU3IDI3Ny40MDUgODUuMzk5MyAyNzcuNDA1IDc1LjA5NTFDMjc3LjQwNSA2NC43OTEgMjg1LjAzMSA1Ny4yMzQ1IDI5NS40MDMgNTcuMjM0NUMzMDUuODQ1IDU3LjIzNDUgMzEzLjQ3IDY0Ljc5MSAzMTMuNDcgNzUuMDk1MUMzMTMuNDcgODUuMzk5MyAzMDUuODQ1IDkyLjk1NTcgMjk1LjQwMyA5Mi45NTU3Wk0yOTUuNDAzIDg2LjE1NUMzMDEuMTA1IDg2LjE1NSAzMDQuODgzIDgxLjU1MjQgMzA0Ljg4MyA3NS4wOTUxQzMwNC44ODMgNjguNjM3OSAzMDEuMTA1IDY0LjAzNTMgMjk1LjQwMyA2NC4wMzUzQzI4OS43NyA2NC4wMzUzIDI4NS45MjQgNjguNjM3OSAyODUuOTI0IDc1LjA5NTFDMjg1LjkyNCA4MS41NTI0IDI4OS43NyA4Ni4xNTUgMjk1LjQwMyA4Ni4xNTVaTTMxOC40MjggOTIuMjY4OFY1Ny45MjE1SDMyNi4zOTZWNjMuMDczNkMzMjguMzg4IDU5LjQzMjggMzMyLjE2NyA1Ny4yMzQ1IDMzNi44MzggNTcuMjM0NUMzNDAuNDc5IDU3LjIzNDUgMzQzLjUwMSA1OC42MDg0IDM0NS42MzEgNjAuODc1NEMzNDcuNzYgNjMuMTQyMyAzNDkuMDY1IDY2LjQzOTYgMzQ5LjA2NSA3MC44MzYxVjkyLjI2ODhIMzQwLjgyMlY3Mi4wNzI2QzM0MC44MjIgNjkuNjY4MyAzNDAuMjA0IDY3LjY3NjEgMzM5LjAzNiA2Ni40Mzk2QzMzNy44NjggNjUuMTM0NCAzMzYuMjIgNjQuNDQ3NSAzMzQuMTU5IDY0LjQ0NzVDMzI5LjYyNSA2NC40NDc1IDMyNi42NzEgNjcuODgyMiAzMjYuNjcxIDczLjEwM1Y5Mi4yNjg4SDMxOC40MjhaIiBmaWxsPSIjRkZGN0VCIi8+Cjwvc3ZnPgo=';
+    logoImg.onload = () => {
+      offCanvas.width  = logoImg.naturalWidth;
+      offCanvas.height = logoImg.naturalHeight;
+      offCtx.drawImage(logoImg, 0, 0);
+      draw();
+    };
+    logoImg.onerror = () => draw();
 
     function it(weight, size) {
-      return weight + ' ' + size + 'px "Inter Tight", sans-serif';
-    }
-
-    // Draw circular text along an arc
-    function drawCircularText(text, cx, cy, radius, startAngle, spacing, color, font) {
-      ctx.save();
-      ctx.font = font;
-      ctx.fillStyle = color;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      const chars = text.split('');
-      const totalArc = (chars.length - 1) * spacing;
-      let angle = startAngle - totalArc / 2;
-      for (let i = 0; i < chars.length; i++) {
-        ctx.save();
-        ctx.translate(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
-        ctx.rotate(angle + Math.PI / 2);
-        ctx.fillText(chars[i], 0, 0);
-        ctx.restore();
-        angle += spacing;
-      }
-      ctx.restore();
+      return weight + ' ' + (size * S) + 'px "Inter Tight", sans-serif';
     }
 
     function drawSeedling(cx, cy, s, color) {
@@ -370,308 +159,200 @@ Learn more at www.personio.foundation/programs/mentorship
       ctx.lineWidth = s * 0.04;
       ctx.beginPath();
       ctx.moveTo(cx, cy + s * 0.05);
-      ctx.bezierCurveTo(cx - s * 0.55, cy, cx - s * 0.85, cy - s * 0.35, cx - s * 0.48, cy - s * 0.45);
-      ctx.bezierCurveTo(cx - s * 0.2, cy - s * 0.52, cx - s * 0.05, cy - s * 0.15, cx, cy + s * 0.05);
+      ctx.bezierCurveTo(cx - s*0.55, cy, cx - s*0.85, cy - s*0.35, cx - s*0.48, cy - s*0.45);
+      ctx.bezierCurveTo(cx - s*0.2, cy - s*0.52, cx - s*0.05, cy - s*0.15, cx, cy + s*0.05);
       ctx.fill();
 
       ctx.beginPath();
       ctx.moveTo(cx, cy - s * 0.1);
-      ctx.bezierCurveTo(cx + s * 0.55, cy - s * 0.15, cx + s * 0.85, cy - s * 0.5, cx + s * 0.45, cy - s * 0.58);
-      ctx.bezierCurveTo(cx + s * 0.18, cy - s * 0.62, cx + s * 0.04, cy - s * 0.28, cx, cy - s * 0.1);
+      ctx.bezierCurveTo(cx + s*0.55, cy - s*0.15, cx + s*0.85, cy - s*0.5, cx + s*0.45, cy - s*0.58);
+      ctx.bezierCurveTo(cx + s*0.18, cy - s*0.62, cx + s*0.04, cy - s*0.28, cx, cy - s*0.1);
       ctx.fill();
 
       ctx.beginPath();
       ctx.moveTo(cx, cy - s * 0.52);
-      ctx.bezierCurveTo(cx - s * 0.22, cy - s * 0.68, cx - s * 0.22, cy - s * 0.9, cx, cy - s * 0.88);
-      ctx.bezierCurveTo(cx + s * 0.22, cy - s * 0.9, cx + s * 0.22, cy - s * 0.68, cx, cy - s * 0.52);
+      ctx.bezierCurveTo(cx - s*0.22, cy - s*0.68, cx - s*0.22, cy - s*0.9, cx, cy - s*0.88);
+      ctx.bezierCurveTo(cx + s*0.22, cy - s*0.9, cx + s*0.22, cy - s*0.68, cx, cy - s*0.52);
       ctx.fill();
 
       ctx.restore();
     }
 
-    function roundRect(x, y, w, h, r) {
-      ctx.beginPath();
-      ctx.moveTo(x + r, y);
-      ctx.lineTo(x + w - r, y);
-      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-      ctx.lineTo(x + w, y + h - r);
-      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-      ctx.lineTo(x + r, y + h);
-      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-      ctx.lineTo(x, y + r);
-      ctx.quadraticCurveTo(x, y, x + r, y);
-      ctx.closePath();
-    }
-
     function draw() {
-      const fname    = document.getElementById('fname').value.trim() || 'First & Last';
-      const lname    = document.getElementById('lname').value.trim() || 'Name';
+      const fname    = document.getElementById('fname').value.trim() || 'Mentor Name';
+      const lname    = document.getElementById('lname').value.trim() || '';
       const year     = document.getElementById('year').value.trim() || '2026';
       const fullName = lname ? fname + ' ' + lname : fname;
 
       ctx.clearRect(0, 0, W, H);
 
-      // --- Background ---
-      ctx.fillStyle = BG;
+      // Background
+      ctx.fillStyle = GREEN_DARK;
       ctx.fillRect(0, 0, W, H);
 
-      // --- Outer border (rounded) ---
-      ctx.strokeStyle = BORDER;
-      ctx.lineWidth = 1.5;
-      roundRect(10, 10, W - 20, H - 20, 14);
-      ctx.stroke();
-
-      const pad = 48;
-
-      // --- TOP LEFT: "Personio" small + "Foundation" large ---
-      ctx.fillStyle = CREAM;
-      ctx.font = it(500, 15);
-      ctx.fillText('Personio', pad, 58);
-      ctx.font = it(700, 32);
-      ctx.fillText('Foundation', pad, 90);
-
-      // --- TOP RIGHT: pill tag "PEOPLE PARTNER FOR GOOD · YEAR" ---
-      const tagText = 'PEOPLE PARTNER FOR GOOD  ·  ' + year;
-      ctx.font = it(600, 26);
-      ctx.letterSpacing = '1.5px';
-      const tagW = ctx.measureText(tagText).width + 40;
-      ctx.letterSpacing = '0px';
-      const tagX = W - pad - tagW;
-      const tagY = 34;
-      const tagH = 44;
-
-      ctx.strokeStyle = CREAM;
-      ctx.globalAlpha = 1;
-      ctx.lineWidth = 1.5;
-      roundRect(tagX, tagY, tagW, tagH, tagH / 2);
-      ctx.stroke();
-
-      ctx.fillStyle = CREAM;
-      ctx.font = it(600, 26);
-      ctx.letterSpacing = '1.5px';
-      ctx.textAlign = 'center';
-      ctx.fillText(tagText, tagX + tagW / 2, tagY + tagH / 2 + 8);
-      ctx.letterSpacing = '0px';
-      ctx.textAlign = 'left';
-
-      // --- MIDDLE LEFT: role label ---
-      ctx.fillStyle = CREAM;
-      ctx.globalAlpha = 0.55;
-      ctx.font = it(500, 13);
-      ctx.letterSpacing = '3px';
-      ctx.fillText('MENTOR  ·  SOCIAL IMPACT', pad, 180);
-      ctx.letterSpacing = '0px';
-      ctx.globalAlpha = 1;
-
-      // --- Name ---
-      ctx.fillStyle = CREAM;
-      const maxNameWidth = W - pad - 260; // leave room for stamp
-      let nameFontSize = 80;
-      ctx.font = it(700, nameFontSize);
-      while (ctx.measureText(fullName).width > maxNameWidth && nameFontSize > 36) {
-        nameFontSize -= 2;
-        ctx.font = it(700, nameFontSize);
-      }
-
-      // If still too long, split on space
-      const nameWords = fullName.split(' ');
-      if (ctx.measureText(fullName).width > maxNameWidth && nameWords.length > 1) {
-        const mid = Math.ceil(nameWords.length / 2);
-        const line1 = nameWords.slice(0, mid).join(' ');
-        const line2 = nameWords.slice(mid).join(' ');
-        nameFontSize = 64;
-        ctx.font = it(700, nameFontSize);
-        ctx.fillText(line1, pad, 258);
-        ctx.fillText(line2, pad, 258 + nameFontSize * 1.15);
-      } else {
-        ctx.fillText(fullName, pad, 270);
-      }
-
-      // --- Tagline ---
-      ctx.fillStyle = CREAM;
-      ctx.globalAlpha = 0.65;
-      ctx.font = it(400, 18);
-      ctx.fillText('Supporting nonprofits in building strong people practices.', pad, 330);
-      ctx.globalAlpha = 1;
-
-      // --- Bottom divider line ---
-      ctx.strokeStyle = CREAM;
-      ctx.globalAlpha = 0.2;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(pad, H - 90);
-      ctx.lineTo(W - pad, H - 90);
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-
-      // --- Bottom row: 3 columns ---
-      const col1X = pad;
-      const col2X = 240;
-      const col3X = 500;
-      const botY1 = H - 62;
-      const botY2 = H - 42;
-
-      // Col 1
-      ctx.fillStyle = CREAM;
-      ctx.globalAlpha = 0.5;
-      ctx.font = it(500, 10);
-      ctx.letterSpacing = '1.5px';
-      ctx.fillText('PP4G MENTOR', col1X, botY1);
-      ctx.globalAlpha = 1;
-      ctx.font = it(700, 22);
-      ctx.letterSpacing = '0px';
-      ctx.fillText(year, col1X, botY2 + 8);
-
-      // Separator 1
-      ctx.strokeStyle = CREAM;
-      ctx.globalAlpha = 0.25;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(col2X - 16, H - 78);
-      ctx.lineTo(col2X - 16, H - 30);
-      ctx.stroke();
-
-      // Col 2
-      ctx.fillStyle = CREAM;
-      ctx.globalAlpha = 0.5;
-      ctx.font = it(500, 10);
-      ctx.letterSpacing = '1.5px';
-      ctx.fillText('PERSONIO.FOUNDATION', col2X, botY1);
-      ctx.globalAlpha = 1;
-
-      // Separator 2
-      ctx.strokeStyle = CREAM;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(col3X - 16, H - 78);
-      ctx.lineTo(col3X - 16, H - 30);
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-
-      // Col 3
-      ctx.fillStyle = CREAM;
-      ctx.globalAlpha = 0.5;
-      ctx.font = it(500, 10);
-      ctx.letterSpacing = '1.5px';
-      ctx.fillText('OUR MISSION', col3X, botY1);
-      ctx.globalAlpha = 1;
-      ctx.font = it(700, 22);
-      ctx.letterSpacing = '0px';
-      ctx.fillText('Drive Innovation for People & Planet', col3X, botY2 + 8);
-      ctx.letterSpacing = '0px';
-
-      // --- STAMP (right side) ---
-      const stampX = W - 165;
-      const stampY = H / 2 - 10;
-      const outerR  = 100;
-      const innerR  = 78;
-
-      // Outer circle (dashed-ish via stroke)
-      ctx.strokeStyle = CREAM;
-      ctx.globalAlpha = 0.35;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(stampX, stampY, outerR, 0, Math.PI * 2);
-      ctx.stroke();
-
-      // Inner circle fill
+      // Circles - original positions scaled by S
+      // Original: arc(W-80, H+40, 260) on 800×400
       ctx.fillStyle = GREEN_MID;
-      ctx.globalAlpha = 0.4;
       ctx.beginPath();
-      ctx.arc(stampX, stampY, innerR, 0, Math.PI * 2);
+      ctx.arc((800 - 80) * S, (400 + 40) * S, 260 * S, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Original: arc(W-60, H+10, 200) on 800×400
+      ctx.fillStyle = GREEN_LIGHT;
+      ctx.globalAlpha = 0.18;
+      ctx.beginPath();
+      ctx.arc((800 - 60) * S, (400 + 10) * S, 200 * S, 0, Math.PI * 2);
       ctx.fill();
       ctx.globalAlpha = 1;
 
-      // Inner circle stroke
-      ctx.strokeStyle = CREAM;
-      ctx.globalAlpha = 0.3;
-      ctx.lineWidth = 1;
+      const leftPad  = 56 * S;
+      const rightPad = 56 * S;
+
+      // Logo - top right, aligned to PEOPLE PARTNER FOR GOOD baseline
+      if (offCanvas.width > 0) {
+        const logoH = 72;
+        const logoW = (offCanvas.width / offCanvas.height) * logoH;
+        ctx.drawImage(offCanvas, W - rightPad * 0.5 - logoW, 84 * S - logoH, logoW, logoH);
+      }
+
+      // "PEOPLE PARTNER FOR GOOD" label
+      ctx.fillStyle = MUTED;
+      ctx.font = it(600, 26);
+      ctx.letterSpacing = '3px';
+      ctx.fillText('PEOPLE PARTNER FOR GOOD', leftPad, 68 * S);
+      ctx.letterSpacing = '0px';
+
+      // Underline - match text width
+      ctx.font = it(600, 26);
+      ctx.letterSpacing = '3px';
+      const labelW = ctx.measureText('PEOPLE PARTNER FOR GOOD').width;
+      ctx.letterSpacing = '0px';
+      ctx.strokeStyle = MUTED;
+      ctx.globalAlpha = 0.45;
+      ctx.lineWidth = 2 * S;
       ctx.beginPath();
-      ctx.arc(stampX, stampY, innerR, 0, Math.PI * 2);
+      ctx.moveTo(leftPad, 84 * S);
+      ctx.lineTo(leftPad + labelW, 84 * S);
       ctx.stroke();
       ctx.globalAlpha = 1;
 
-      // Seedling in stamp
-      drawSeedling(stampX, stampY + 4, 32, CREAM);
-
-      // Circular text - "MENTOR" on top arc
-      const circFont = it(600, 11);
-      ctx.letterSpacing = '0px';
-      drawCircularText('MENTOR', stampX, stampY, 88, -Math.PI / 2, 0.22, CREAM, circFont);
-
-      // Circular text - "SOCIAL IMPACT" on bottom arc (flipped)
-      function drawCircularTextBottom(text, cx, cy, radius, startAngle, spacing, color, font) {
-        ctx.save();
-        ctx.font = font;
-        ctx.fillStyle = color;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        const chars = text.split('');
-        const totalArc = (chars.length - 1) * spacing;
-        let angle = startAngle + totalArc / 2;
-        for (let i = 0; i < chars.length; i++) {
-          ctx.save();
-          ctx.translate(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
-          ctx.rotate(angle - Math.PI / 2);
-          ctx.fillText(chars[i], 0, 0);
-          ctx.restore();
-          angle -= spacing;
-        }
-        ctx.restore();
+      // Name
+      ctx.fillStyle = WHITE;
+      const isLong = fullName.length > 16 && fullName.includes(' ');
+      if (isLong) {
+        const parts = fullName.split(' ');
+        ctx.font = it(700, 44);
+        ctx.fillText(parts[0], leftPad, 140 * S);
+        ctx.fillText(parts.slice(1).join(' '), leftPad, 188 * S);
+      } else {
+        ctx.font = it(700, 52);
+        ctx.fillText(fullName, leftPad, 158 * S);
       }
 
-      drawCircularTextBottom('SOCIAL IMPACT', stampX, stampY, 88, Math.PI / 2, 0.18, CREAM, it(600, 11));
+      // Tagline
+      ctx.fillStyle = MUTED;
+      ctx.globalAlpha = 0.6;
+      ctx.font = it(400, 13);
+      const taglineY = isLong ? 230 * S : 214 * S;
+      ctx.fillText('Supporting nonprofits in building strong people practices.', leftPad, taglineY);
+      ctx.globalAlpha = 1;
+
+      // Bottom divider
+      ctx.strokeStyle = GREEN_LIGHT;
+      ctx.globalAlpha = 0.25;
+      ctx.lineWidth = 0.5 * S;
+      ctx.beginPath();
+      ctx.moveTo(leftPad, (H / S - 90) * S);
+      ctx.lineTo(leftPad + 300 * S, (H / S - 90) * S);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // PP4G Mentor · year
+      ctx.fillStyle = WHITE;
+      ctx.font = it(500, 13);
+      ctx.fillText('PP4G Mentor  ·  ' + year, leftPad, (H / S - 68) * S);
+
+      // Personio Foundation
+      ctx.fillStyle = MUTED;
+      ctx.globalAlpha = 0.7;
+      ctx.font = it(400, 12);
+      ctx.fillText('Personio Foundation', leftPad, (H / S - 46) * S);
+      ctx.globalAlpha = 1;
+
+      // ── Medallion - original: badgeX = W-195, badgeY = H/2+10, badgeR = 64
+      const badgeX = (800 - 195) * S;
+      const badgeY = (400 / 2 + 10) * S;
+      const badgeR = 64 * S;
+
+      // 3 glow rings
+      [[badgeR + 28 * S, 0.12], [badgeR + 16 * S, 0.22], [badgeR + 7 * S, 0.40]].forEach(([r, a]) => {
+        ctx.fillStyle = GREEN_LIGHT;
+        ctx.globalAlpha = a;
+        ctx.beginPath();
+        ctx.arc(badgeX, badgeY, r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+
+      // Medallion fill
+      ctx.fillStyle = GREEN_LIGHT;
+      ctx.beginPath();
+      ctx.arc(badgeX, badgeY, badgeR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Seedling inside medallion
+      const plantSize = 26 * S;
+      const gap       = 9  * S;
+      const topH      = 11 * S;
+      const botH      = 9  * S;
+      const totalH    = topH + gap + plantSize * 1.5 + gap + botH;
+      const startY    = badgeY - totalH / 2;
+
+      // MENTOR
+      ctx.fillStyle = GREEN_DARK;
+      ctx.font = it(600, 11);
+      ctx.letterSpacing = '1.5px';
+      ctx.textAlign = 'center';
+      ctx.fillText('MENTOR', badgeX, startY + topH);
+      ctx.letterSpacing = '0px';
+
+      // Seedling
+      drawSeedling(badgeX, startY + topH + gap + plantSize * 0.75, plantSize, GREEN_DARK);
+
+      // SOCIAL IMPACT
+      ctx.fillStyle = GREEN_DARK;
+      ctx.font = it(400, 9);
+      ctx.letterSpacing = '1px';
+      ctx.fillText('SOCIAL IMPACT', badgeX, startY + totalH);
+      ctx.letterSpacing = '0px';
+      ctx.textAlign = 'left';
     }
 
     function download() {
-      const link  = document.createElement('a');
-      const fname = document.getElementById('fname').value.trim() || 'mentor';
-      link.download = 'pp4g-badge-' + fname.toLowerCase().replace(/\s+/g, '-') + '.png';
-      link.href     = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = 'pp4g-badge-' + (document.getElementById('fname').value.trim() || 'mentor').toLowerCase().replace(/\s+/g, '-') + '.png';
+      link.href = canvas.toDataURL('image/png');
       link.click();
     }
 
     function copyInstructions() {
       const year = document.getElementById('year').value.trim() || '2026';
-      const text =
-`How to add your PP4G badge on LinkedIn:
-
-1. Go to your LinkedIn profile and click "Add profile section"
-2. Select "Recommended" → "Add licenses & certifications"
-3. Fill in:
-   - Name: People Partner for Good Mentor
-   - Issuing organization: Personio Foundation
-   - Issue date: your start date (month/${year})
-4. Upload your downloaded badge image as the credential media
-5. Save and share as a post to celebrate your contribution!
-
-Thank you for being a PP4G mentor.`;
-      navigator.clipboard.writeText(text).then(() => showToast());
+      navigator.clipboard.writeText(`How to add your PP4G badge on LinkedIn:\n\n1. Go to your LinkedIn profile and click "Add profile section"\n2. Select "Recommended" → "Add licenses & certifications"\n3. Fill in:\n   - Name: People Partner for Good Mentor\n   - Issuing organization: Personio Foundation\n   - Issue date: your start date (month/${year})\n4. Upload your downloaded badge image as the credential media\n5. Save and share as a post to celebrate your contribution!\n\nThank you for being a PP4G mentor.`).then(() => showToast());
     }
 
     function shareLinkedIn() {
-      const text =
-        `Proud to support the Personio Foundation as a People Partner for Good mentor - sharing my HR expertise with nonprofits to help them build robust people practices and accelerate their mission. 🌱\n\n` +
-        `Learn more at www.personio.foundation/programs/mentorship\n\n` +
-        `#PP4G #PeoplePartnerForGood #PersonioFoundation #SocialImpact`;
-
-      const url = 'https://www.linkedin.com/sharing/share-offsite/?' +
-        'mini=true&' +
-        'url=' + encodeURIComponent('https://www.personio.foundation/programs/mentorship') + '&' +
-        'summary=' + encodeURIComponent(text);
-
+      const url = 'https://www.linkedin.com/sharing/share-offsite/?mini=true&url=' + encodeURIComponent('https://www.personio.foundation/programs/mentorship') + '&summary=' + encodeURIComponent('Proud to support the Personio Foundation as a People Partner for Good mentor - sharing my HR expertise with nonprofits to help them build robust people practices and accelerate their mission. 🌱\n\n#PP4G #PeoplePartnerForGood #PersonioFoundation #SocialImpact');
       window.open(url, '_blank', 'width=600,height=600');
     }
 
     function copyPost() {
-      const text = document.getElementById('post-text').innerText;
-      navigator.clipboard.writeText(text).then(() => showToast());
+      navigator.clipboard.writeText(document.getElementById('post-text').innerText).then(() => showToast());
     }
 
     function showToast() {
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2200);
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
     }
 
     document.fonts.ready.then(() => draw());
